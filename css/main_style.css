@@ -191,11 +191,28 @@ textarea {
   font-size: 18px;
   border-radius: 0;
   color: #fff;
+  position: relative;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease; }
+  .btn:before, .btn:after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s; }
+  .btn:after {
+    top: auto;
+    left: auto;
+    bottom: 5px;
+    right: 5px; }
   .btn:hover, .btn:focus {
     background-color: #2895D1;
     border-color: #2895D1;
@@ -204,6 +221,8 @@ textarea {
     box-shadow: none;
     outline-offset: 0;
     outline: 0; }
+    .btn:hover:before, .btn:hover:after, .btn:focus:before, .btn:focus:after {
+      width: 50%; }
   .btn.btn-color {
     background-color: #FA5A22;
     border-color: #FA5A22; }
@@ -308,22 +327,25 @@ textarea {
       .banner .item .banner-content .btn {
         margin: 35px 0 0; }
   .banner .slick-dots {
-    bottom: 35px; }
+    bottom: 35px;
+    width: 20%; }
     .banner .slick-dots li {
-      width: 10px;
-      height: 10px; }
+      width: 0;
+      height: 0; }
       .banner .slick-dots li button:before {
         content: '';
-        background-color: #fff;
-        height: 10px;
-        width: 10px;
         opacity: 1;
+        width: 2px;
+        bottom: 0;
+        top: inherit;
+        background: #fff;
         -webkit-transition: all 0.5s ease;
         -moz-transition: all 0.5s ease;
         -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease; }
       .banner .slick-dots li.slick-active button:before {
+        height: 35px;
         background-color: #FA5A22; }
   .banner:hover .slick-next {
     right: 20px; }
@@ -379,21 +401,24 @@ textarea {
     right: 30px;
     text-align: right; }
     .forex-signal .slick-dots li {
-      width: 10px;
-      height: 10px; }
+      width: 0;
+      height: 0; }
       .forex-signal .slick-dots li button:before {
         content: '';
         background-color: #fff;
-        height: 10px;
-        width: 10px;
+        height: 15px;
+        width: 2px;
         opacity: 1;
+        bottom: 0;
+        top: inherit;
         -webkit-transition: all 0.5s ease;
         -moz-transition: all 0.5s ease;
         -ms-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease; }
       .forex-signal .slick-dots li.slick-active button:before {
-        background-color: #000000; }
+        background-color: #000000;
+        height: 30px; }
   .forex-signal .signal-service {
     padding: 80px 30px; }
     .forex-signal .signal-service ul li {
@@ -517,6 +542,8 @@ textarea {
         border-bottom: 1px dotted lightgrey; }
         .pricing-table .pricingTable .pricing-content ul li:last-child {
           border-bottom: 0; }
+    .pricing-table .pricingTable .pricing-content .btn:hover:after, .pricing-table .pricingTable .pricing-content .btn:hover:before, .pricing-table .pricingTable .pricing-content .btn:focus:after, .pricing-table .pricingTable .pricing-content .btn:focus:before {
+      width: 0; }
     .pricing-table .pricingTable .pricing-content .btn-color {
       width: 100%;
       margin: 15px 0 0;
@@ -580,7 +607,12 @@ textarea {
     .footer .widget.footer-menu ul li a {
       font-size: 16px;
       color: #fff;
-      padding: 8px; }
+      padding: 8px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease; }
     .footer .widget.footer-menu ul li a:hover, .footer .widget.footer-menu ul li a:focus {
       background-color: transparent;
       color: #FA5A22; }
@@ -607,6 +639,15 @@ textarea {
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center; }
+      .footer .widget.social-media ul li a span:hover, .footer .widget.social-media ul li a span:focus {
+        -webkit-transform: translateY(-0.25em);
+        -ms-transform: translateY(-0.25em);
+        transform: translateY(-0.25em);
+        box-shadow: 0 0.7em 0.5em -0.5em #000000;
+        -o-box-shadow: 0 0.7em 0.5em -0.5em #000000;
+        -ms-box-shadow: 0 0.7em 0.5em -0.5em #000000;
+        -moz-box-shadow: 0 0.7em 0.5em -0.5em #000000;
+        -webkit-box-shadow: 0 0.7em 0.5em -0.5em #000000; }
       .footer .widget.social-media ul li a span:hover.ion-social-facebook, .footer .widget.social-media ul li a span:focus.ion-social-facebook {
         background-color: #2B416D; }
       .footer .widget.social-media ul li a span:hover.ion-social-twitter, .footer .widget.social-media ul li a span:focus.ion-social-twitter {
@@ -780,7 +821,7 @@ textarea {
   .forex-signal .signal-slider .item {
     padding-left: 15px;
     padding-right: 15px;
-    display: inherit; }
+    display: inherit !important; }
     .forex-signal .signal-slider .item img {
       margin: 0 auto; }
   .forex-signal .signal-service {
