@@ -9,12 +9,19 @@
                     <a href="mailto:SUPPORT@DUXFOREX.COM">SUPPORT@DUXFOREX.COM</a>
                 </div>
                 <div class="col-md-4 col-xs-6 col widget footer-menu">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="about.html">Services</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                    <?php wp_nav_menu( 
+                          array(
+                          'menu'               => 'Main Menu',
+                          'theme_location'     => 'footer_menu',
+                          'depth'              => 2,
+                          'container'          => 'false',
+                          'menu_class'         => 'nav navbar-nav',
+                          'menu_id'            => '',
+                          'fallback_cb'        => 'wp_bootstrap_navwalker::fallback',
+                          'walker'             => new wp_bootstrap_navwalker()
+                          ) 
+                        ); 
+                    ?>
                 </div>
                 <div class="col-md-4 col-xs-6 col widget social-media">
                     <ul class="list-inline">

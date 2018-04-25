@@ -276,84 +276,88 @@
         </div>
     </section><!--/ call-to-action -->
     <?php endif; ?>
-
+    
+    <?php if (get_field('customer_service_enable_disable')): 
+    $title = get_field('customer_title');
+    $des   = get_field('customer_description');
+    ?>
     <section class="pricing-service section-padding">
         <div class="container">
             <div class="row justify-content-center title">
+                <?php if ($title && $des): ?>
                 <div class="col-md-10 col-sm-10 text-center">
-                    <h1>What You'll Receive</h1>
-                    <p>When you sign up with us, we make sure you're equip with the best tools. Know that you'll be receiving forex signals from some of the most experienced traders. We'll be trading the market with you and many tens and thousands of other subscribers will be following the same signals as well. If you're wanting accurate forex signals, whether you are a newbie or an experienced trader, Dux Forex is what you need. We are confident in our service and our success is very real. With e-mail and mobile alerts, it is very easy to profit from our signals. Leave the hard work to us and enjoy the benefits.</p>
+                    <h1><?php echo $title; ?></h1>
+                    <?php echo $des; ?>
                 </div>
+                <?php endif; ?>
             </div>
             <div class="row pricing-service-item">
+                <?php 
+                    $service_item = get_field('customer_services');
+                    foreach ($service_item as $service):
+                    $s_title = $service['customer_services_title'];
+                    $s_con = $service['customer_services_content'];
+                 ?>
                 <div class="col-md-6 col-sm-6 col-xs-6 col">
+                    <?php if ($s_title && $s_con): ?>
                     <div class="service-item text-center">
-                        <h4>Forex Signals</h4>
-                        <p>As a member, you will receive signals that include Entry, SL and 3 TP on most major currency pairs. We carefully analyze the market conditions and only send signals on the pair(s) with the highest probability of success. All trades are articulately calculated and researched. Economic news, price action, candlestick patterns etc are what we base our signals on.</p>
+                        <h4><?php echo $s_title; ?></h4>
+                        <?php echo $s_con; ?>
                     </div>
+                    <?php endif; ?>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-6 col">
-                    <div class="service-item text-center">
-                        <h4>Mobile Alerts</h4>
-                        <p>Download and install our free Dux Forex Notifier app on your phone. Whenever any signals or important news gets released, you will receive alerts. The notifications will play sound and vibrate. Our app can be downloaded free from Google Play and iTunes.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6 col">
-                    <div class="service-item text-center">
-                        <h4>Easy user interface</h4>
-                        <p>Our forex signals user interface is very easy to follow. Each entry will have it's own column which will be labeled accordingly. Based on the information there, you place the trades on your platform. Everything will automatically refresh without you needing to reload the page. It will also adjust to your screen size.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6 col">
-                    <div class="service-item text-center">
-                        <h4>Information Area</h4>
-                        <p>All information including latest strategies, newly discovered breakthroughs and more will be available to you. Dux Forex also has a research team that is always looking for ways to better a traders experience. A member can also choose to receive alerts when things get posted.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6 col">
-                    <div class="service-item text-center">
-                        <h4>Free unlimited updates</h4>
-                        <p>Any updates or service upgrades will be provided to you FREE of charge. When new features are added to the forex signals interface or when any type of upgrades are implemented, you never have to worry about any fee increase. You can enjoy all the benefits.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6 col">
-                    <div class="service-item text-center">
-                        <h4>Great customer support</h4>
-                        <p>Any updates or service upgrades will be provided to you FREE of charge. When new features are added to the forex signals interface or when any type of upgrades are implemented, you never have to worry about any fee increase. You can enjoy all the benefits.</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section><!-- /pricing-service -->
+    <?php endif; ?>
     
+    <?php if (get_field('pricing_enable_disable')): ?>
     <section class="pricing-table section-padding">
         <div class="container">
+            <?php 
+                $titl  = get_field('pricing_title');
+             ?>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="text-center section-title">
-                        <h3>Choose A Plan. All Plans Have The Same Features!</h3>
-                    </div>
+                    <?php if ($titl): ?>
+                        <div class="text-center section-title">
+                            <h3><?php echo $titl; ?></h3>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="row">
+                <?php 
+                    $table  = get_field('pricing_table');
+                    foreach ($table as $table_item):
+                    $plan   = $table_item['price_time'];
+                    $price   = $table_item['package_price'];
+                 ?>
                 <div class="col-md-4 col-sm-6 col-xs-6 col">
                     <div class="pricingTable">
-                        <h3 class="title">1 Month Plan</h3>
-                        <div class="price-value">
-                            <span class="month"><sup>$</sup>4.99</span>
-                        </div>
+                        <?php if ($plan): ?>
+                            <h3 class="title"><?php echo $plan; ?></h3>
+                        <?php endif; ?>
+                        <?php if ($price): ?>
+                            <div class="price-value">
+                                <span class="month"><?php echo $price; ?></span>
+                            </div>
+                        <?php endif; ?>
                         <div class="pricing-content">
                             <ul>
-                                <li>Accurate Signals</li>
-                                <li>E-mail Alerts</li>
-                                <li>Sound Alerts</li>
-                                <li>Entries, SL And 3 TP</li>
-                                <li>All Major Currency Pairs</li>
-                                <li>Mobile Support</li>
+                                <?php 
+                                    $package = get_field($table_item['package_service']);
+                                    foreach ($package as $package_list):
+                                    $package_se = $package_list['$package_list'];
+                                 ?>
+                                <li><?php echo $package_se; ?></li>
+                                <?php endforeach; ?>
                             </ul>
                             <a href="#" class="btn btn-color">Start Now<span class="ion-paper-airplane"></span></a>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-6 col">
                     <div class="pricingTable">
@@ -396,6 +400,7 @@
             </div>
         </div>
     </section><!--/ pricing table -->
+    <?php endif; ?>
 
     <section class="services why-we-best section-padding">
         <div class="container">

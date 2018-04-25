@@ -42,7 +42,7 @@
                           'container'          => 'false',
                           'menu_class'         => 'nav navbar-nav navbar-right',
                           'menu_id'            => '',
-                          //'fallback_cb'        => 'wp_bootstrap_navwalker::fallback',
+                          'fallback_cb'        => 'wp_bootstrap_navwalker::fallback',
                           'walker'             => new wp_bootstrap_navwalker()
                           ) 
                         ); 
