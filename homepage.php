@@ -401,28 +401,48 @@
         </div>
     </section><!--/ pricing table -->
     <?php endif; ?>
-
+    
+    <?php if (get_field('forex_award_enable_disable')): ?>
     <section class="services why-we-best section-padding">
         <div class="container">
             <div class="row">
+                <?php 
+                    $img = get_field('award_image');
+                    $title = get_field('forex_award_title');
+                    $des= get_field('forex_award_description');
+                 ?>
                 <div class="col-md-6">
+                    <?php if ($img): ?>
                     <div class="services-img">
-                        <img src="../images/dux_forex.png" class="img-responsive" alt="">
+                        <img src="<?php echo $img; ?>" class="img-responsive" alt="">
                     </div>
+                    <?php endif;?>
                 </div>
                 <div class="col-md-6">
                     <div class="services-content">
-                        <h3>Our Forex Signals Win...Still The Best In 2018</h3>
-                        <p>Dux Forex focuses on one thing and one thing only. That is to WIN. With our forex signals, we don't use silly lag indicators or over-hyped systems that you may have heard of. We use secret techniques that profit at special times of the day/night. We monitor and analyze the market all day so that you don't have to. Our service is PERFECT for:</p>
+                        <?php if ($title): ?>
+                            <h3><?php echo $title; ?></h3>
+                        <?php endif ?>
+                        <?php if ($des): ?>
+                            <?php echo $des; ?>
+                        <?php endif ?>
                         <ul class="list-inline">
-                            <li><span class="ion-checkmark-circled"></span><p>Newbies that want the benefits of a successful trader.</p></li>
-                            <li><span class="ion-checkmark-circled"></span><p> Professionals that don't have time to analyze the market.</p></li>
-                            <li><span class="ion-checkmark-circled"></span><p>People that have have a tight schedule and work other jobs.</p></li>
+                            <?php 
+                                $item = get_field('award_item');
+                                foreach ($item as $ite):
+                                $con = $ite['award_content'];
+                             ?>
+                             <?php if ($con): ?>
+                            <li><span class="ion-checkmark-circled"></span><p>
+                                <?php echo $con; ?></p>
+                            </li>
+                            <?php endif; endforeach;?>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section><!--/ Signal profitable -->
+    <?php endif; ?>
 
 <?php get_footer(); ?>
