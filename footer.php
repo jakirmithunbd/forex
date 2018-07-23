@@ -2,11 +2,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-xs-6 col widget footer-img">
-                    <img src="../images/logo.png" class="img-responsive" alt="">
+                    <?php 
+                        $img = get_field('footer_logo', 'options');
+                        $add = get_field('address_text', 'options');
+                        $email_link = get_field('e-mail', 'options');
+                        $email = get_field('e-mail', 'options');
+                     ?>
+                    <img src="<?php echo $img; ?>" class="img-responsive" alt="<?php echo $img; ?>">
                     <address>
-                        NEW PORT, CARDIFF, CF23 9AR, UNITED KINGDOM 
+                        <?php echo $add; ?> 
                     </address>
-                    <a href="mailto:SUPPORT@DUXFOREX.COM">SUPPORT@DUXFOREX.COM</a>
+                    <a href="mailto:<?php echo $email_link['e-mail_link']; ?>"><?php echo $email['e-mail_text']; ?></a>
                 </div>
                 <div class="col-md-4 col-xs-6 col widget footer-menu">
                     <?php wp_nav_menu( 
@@ -26,22 +32,14 @@
                 <div class="col-md-4 col-xs-6 col widget social-media">
                     <ul class="list-inline">
                         <?php 
-                            $social = get_field('social_link');
+                            $social = get_field('social_link', 'options');
                             foreach ($social as $soci):
-                            $link = $soci['s_link', 'options'];
-                            $icon = $soci['s_icon', 'options'];
+                            $link = $soci['s_link'];
+                            $icon = $soci['s_icon'];
                          ?>
-                        <!-- <li><a href="https://www.facebook.com/duxforex"><span class="ion-social-facebook"></span></a></li> -->
                         <li><a href="<?php echo $link; ?>"><span class="ion-social-<?php echo $icon; ?>"></span></a>
                         </li>
                         <?php endforeach; ?>
-                        <!-- <li><a href="https://twitter.com/duxforex"><span class="ion-social-twitter"></span></a></li>
-                        <li><a href="https://plus.google.com/+DuxForexOfficial/posts"><span class="ion-social-googleplus"></span></a></li>
-                        <li><a href="https://www.pinterest.com/duxforex/"><span class="ion-social-pinterest"></span></a></li>
-                        <li><a href="https://ca.linkedin.com/in/dux-forex-575b22113"><span class="ion-social-linkedin"></span></a></li>
-                        <li><a href="https://www.youtube.com/channel/UClng6oCG52lyK1OMoGpGn3A"><span class="ion-social-youtube"></span></a></li>
-                        <li><a href="https://duxforex.tumblr.com/"><span class="ion-social-tumblr"></span></a></li>
-                        <li><a href="https://www.reddit.com/user/duxforex/"><span class="ion-social-reddit"></span></a></li> -->
                     </ul>
                 </div>
             </div>

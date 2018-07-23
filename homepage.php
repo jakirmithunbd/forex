@@ -347,56 +347,20 @@
                         <div class="pricing-content">
                             <ul>
                                 <?php 
-                                    $package = get_field($table_item['package_service']);
-                                    foreach ($package as $package_list):
-                                    $package_se = $package_list['$package_list'];
+                                    $packages = $table_item['package_service'];
+                                    if($packages) :
+                                    foreach ($packages as $package):
+                                    //$package_se = ;
                                  ?>
-                                <li><?php echo $package_se; ?></li>
-                                <?php endforeach; ?>
+                                    <li><?php echo $package['package_item']; ?></li>
+                                <?php endforeach; endif;?>
                             </ul>
                             <a href="#" class="btn btn-color">Start Now<span class="ion-paper-airplane"></span></a>
                         </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-6 col">
-                    <div class="pricingTable">
-                        <h3 class="title">1 Year Plan</h3>
-                        <div class="price-value">
-                            <span class="month"><sup>$</sup>47</span>
-                        </div>
-                        <div class="pricing-content">
-                            <ul>
-                                <li>Accurate Signals</li>
-                                <li>E-mail Alerts</li>
-                                <li>Sound Alerts</li>
-                                <li>Entries, SL And 3 TP</li>
-                                <li>All Major Currency Pairs</li>
-                                <li>Mobile Support</li>
-                            </ul>
-                            <a href="#" class="btn btn-color">Start Now<span class="ion-paper-airplane"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-6 col">
-                    <div class="pricingTable">
-                        <h3 class="title">3 Year Plan</h3>
-                        <div class="price-value">
-                            <span class="month"><sup>$</sup>112</span>
-                        </div>
-                        <div class="pricing-content">
-                            <ul>
-                                <li>Accurate Signals</li>
-                                <li>E-mail Alerts</li>
-                                <li>Sound Alerts</li>
-                                <li>Entries, SL And 3 TP</li>
-                                <li>All Major Currency Pairs</li>
-                                <li>Mobile Support</li>
-                            </ul>
-                            <a href="#" class="btn btn-color">Start Now<span class="ion-paper-airplane"></span></a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section><!--/ pricing table -->
